@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Menu icon" (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Sistema empresarial</h1>
+  </mat-toolbar>
+  
+  <mat-sidenav-container autosize>
+    <mat-sidenav [opened]="isSidenavOpen" mode="side">
+      <mat-nav-list>
+        <a mat-list-item>
+          <span class="entry">
+            <mat-icon>persons</mat-icon>
+           Asignaciones
+          </span>
+        </a>
+        <a mat-list-item>
+            <span class="entry">
+              <mat-icon>persons</mat-icon>
+             Usuarios
+            </span>
+          </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

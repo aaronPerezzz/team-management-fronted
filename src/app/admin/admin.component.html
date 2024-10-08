@@ -1,0 +1,81 @@
+<div class="dashboard">
+   
+
+    <main class="content">
+      <mat-tab-group>
+        <!-- Pestaña de Equipos electrónicos -->
+        <mat-tab label="Equipos electrónicos"> 
+          <div class="dashboard-container">
+            <!-- Grid de tarjetas -->
+            <mat-grid-list cols="3" rowHeight="140px">
+              <!-- Tarjeta de Disponibles -->
+              <mat-grid-tile>
+                <mat-card class="card available">
+                  <mat-card-header>
+                    <mat-card-title>Disponibles</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>6</p>
+                  </mat-card-content>
+                </mat-card>
+              </mat-grid-tile>
+
+              <!-- Tarjeta de Ocupados -->
+              <mat-grid-tile>
+                <mat-card class="card occupied">
+                  <mat-card-header>
+                    <mat-card-title>Ocupados</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>10</p>
+                  </mat-card-content>
+                </mat-card>
+              </mat-grid-tile>
+
+              <!-- Tarjeta de En mantenimiento -->
+              <mat-grid-tile>
+                <mat-card class="card maintenance">
+                  <mat-card-header>
+                    <mat-card-title>En Mantenimiento</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p >9</p>
+                  </mat-card-content>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+
+          <table class="tabla-asignaciones">
+            <caption>Asignación de Equipos</caption>
+            <thead>
+              <tr>
+                <th>Empleado</th>
+                <th>Equipo</th>
+                <th>Serie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empleado of empleados">
+                <td>{{ empleado.nombre }}</td>
+                <td><mat-icon>{{ getEquipoIcon(empleado.equipo) }}</mat-icon></td>
+                <td>{{ empleado.serie }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          
+        </mat-tab>
+
+
+        <mat-tab label="Equipos de transporte"> <app-dashboard></app-dashboard> </mat-tab>
+
+
+        
+      </mat-tab-group>
+      
+    </main>
+  </div>
+  
+
+ 
