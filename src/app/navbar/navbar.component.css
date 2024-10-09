@@ -1,0 +1,23 @@
+mat-sidenav {
+    width: 200px; /* Tamaño más pequeño (puedes ajustar este valor según lo necesites) */
+    background-color: black;
+  }
+  
+  mat-toolbar{
+    background-color: black;
+  }
+
+  h1{
+    color: #ffffff;
+  }
+  .entry{
+    color: #ffffff;
+  }
+  .logout-button {
+    color: white; /* Cambia el color del icono a blanco */
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
