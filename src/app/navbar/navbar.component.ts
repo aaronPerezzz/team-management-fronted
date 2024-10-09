@@ -1,11 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Component,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component,ViewChild, AfterViewInit,} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-
+import { MsalService } from '@azure/msal-angular';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -17,7 +13,7 @@ export class NavbarComponent implements AfterViewInit {
   isMobile = true;
   isSidenavOpen = false;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver,private msalService: MsalService,) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -49,5 +45,12 @@ export class NavbarComponent implements AfterViewInit {
     } else {
       this.sidenav.close();
     }
+  }
+
+  // Método para cerrar sesión
+  logout() {
+    this.msalService.logoutRedirect({
+      postLogoutRedirectUri: 'http://localhost:4200/login'  // Redirige a la página de login después de cerrar sesión
+    });
   }
 }

@@ -3,6 +3,14 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1>Sistema empresarial</h1>
+    
+    <!-- Añadir un espacio para empujar el botón de cerrar sesión a la derecha -->
+    <span class="spacer"></span>  
+    
+    <!-- Botón de cerrar sesión al final del toolbar -->
+    <button mat-icon-button aria-label="Cerrar sesión" (click)="logout()"  class="logout-button">
+      <mat-icon>logout</mat-icon>
+    </button>
   </mat-toolbar>
   
   <mat-sidenav-container autosize>
@@ -10,18 +18,19 @@
       <mat-nav-list>
         <a mat-list-item>
           <span class="entry">
-            <mat-icon>persons</mat-icon>
-           Asignaciones
+            <mat-icon>assignment</mat-icon>
+            Asignaciones
           </span>
         </a>
         <a mat-list-item>
-            <span class="entry">
-              <mat-icon>persons</mat-icon>
-             Usuarios
-            </span>
-          </a>
+          <span class="entry">
+            <mat-icon>persons</mat-icon>
+            Usuarios
+          </span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
+    
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>

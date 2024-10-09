@@ -13,3 +13,11 @@ mat-sidenav {
   .entry{
     color: #ffffff;
   }
+  .logout-button {
+    color: white; /* Cambia el color del icono a blanco */
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  

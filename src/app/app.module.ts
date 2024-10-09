@@ -20,39 +20,41 @@ import { MatListModule } from '@angular/material/list';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MsalInterceptor } from '@azure/msal-angular';
+import { MsalModule, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptor, MsalInterceptorConfiguration, MsalGuardConfiguration, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
+import { PublicClientApplication, InteractionType, IPublicClientApplication } from '@azure/msal-browser';
 
 
-import { MsalModule, MsalGuard, MsalService, MsalGuardConfiguration, MsalInterceptorConfiguration } from '@azure/msal-angular';
-import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+
 
 const isIE = window.navigator.userAgent.includes('MSIE') || window.navigator.userAgent.includes('Trident/');
 
-const msalInstance = new PublicClientApplication({
-  auth: {
-    clientId: 'b9f2a066-b306-417b-b549-4f51ef597177', // Id. de aplicación (cliente)
-    authority: 'https://login.microsoftonline.com', // Id. de directorio (inquilino)
-    redirectUri: 'http://localhost:4200'
-  },
-  cache: {
-    cacheLocation: 'localStorage',
-    storeAuthStateInCookie: isIE
-  }
-});
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    
+      auth: {
+        clientId: 'b9f2a066-b306-417b-b549-4f51ef597177',
+        authority: 'https://login.microsoftonline.com/102d3653-c8a4-4711-a5a3-7dc0ab963878',
+        redirectUri: 'http://localhost:4200'
+      },
+      cache: {
+        cacheLocation: 'localStorage',
+        storeAuthStateInCookie: isIE
+      }
+    
+  })}
+    
 
-const guardConfig: MsalGuardConfiguration = {
-  interactionType: InteractionType.Redirect,
-  authRequest: {
-    scopes: ['user.read']
-  }
-};
+  export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+    return { interactionType: InteractionType.Redirect,
+      authRequest: {
+        scopes: ['user.read']
+      }}}
 
-const interceptorConfig: MsalInterceptorConfiguration = {
-  interactionType: InteractionType.Redirect,
-  protectedResourceMap: new Map([
-    ['https://graph.microsoft.com/v1.0/me', ['user.read']]
-  ])
-};
+      export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+       return{ interactionType: InteractionType.Redirect,
+        protectedResourceMap: new Map([
+          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+        ])}}
 
 
 
@@ -68,25 +70,40 @@ const interceptorConfig: MsalInterceptorConfiguration = {
     ToastrModule.forRoot(),
     MatListModule,
     BrowserModule,
-    AppRoutingModule,
     MatTabsModule,  
     MatCardModule, MatGridListModule, MatMenuModule, MatIconModule, MatButtonModule, 
     MatToolbarModule,
     MatSidenavModule,
     MatTableModule,
-    MsalModule.forRoot(msalInstance, guardConfig, interceptorConfig),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     provideAnimationsAsync(),
     CookieService,
     MsalService,
+    MsalGuard,
+    MsalBroadcastService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    },
+    {
+      provide: MSAL_GUARD_CONFIG,
+      useFactory: MSALGuardConfigFactory
+    },
+    {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory
+    },
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

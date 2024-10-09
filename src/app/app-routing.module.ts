@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
-import { LoginComponent } from './login.component';
-import { ProfileComponent } from './profile.component';
+import {AdminComponent} from './admin/admin.component'
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'profile', component: AdminComponent, canActivate: [MsalGuard] },
+  { path: '', redirectTo: '/profile', pathMatch: 'full' }  // Redirige directamente a la ruta protegida
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
