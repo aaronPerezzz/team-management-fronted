@@ -10,7 +10,7 @@ export class ToastService {
   constructor(private toastService: ToastrService) { }
 
   public message(title: string, message: string, toastType: ToastType): void {
-    console.log('ToastService:', title, message, toastType);  // Añade este log para depurar
+    console.log('ToastService:', title, message, toastType);  
     switch(toastType){
       case ToastType.INFO:
         this.toastService.info(message, title);

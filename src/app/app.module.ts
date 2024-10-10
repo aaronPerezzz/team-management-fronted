@@ -9,9 +9,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { AdminComponent } from './features/admin/admin/admin.component';
+import { DashboardComponent } from './shared/navbar/dashboard/dashboard.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatTableModule} from '@angular/material/table';
@@ -22,6 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MsalModule, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptor, MsalInterceptorConfiguration, MsalGuardConfiguration, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType, IPublicClientApplication } from '@azure/msal-browser';
+import { environment } from '../environments/environment'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -30,33 +32,35 @@ const isIE = window.navigator.userAgent.includes('MSIE') || window.navigator.use
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
-    
-      auth: {
-        clientId: 'b9f2a066-b306-417b-b549-4f51ef597177',
-        authority: 'https://login.microsoftonline.com/102d3653-c8a4-4711-a5a3-7dc0ab963878',
-        redirectUri: 'http://localhost:4200'
-      },
-      cache: {
-        cacheLocation: 'localStorage',
-        storeAuthStateInCookie: isIE
-      }
-    
-  })}
-    
+    auth: {
+      clientId: environment.msalConfig.clientId,
+      authority: environment.msalConfig.authority,
+      redirectUri: environment.msalConfig.redirectUri
+    },
+    cache: {
+      cacheLocation: 'localStorage',
+      storeAuthStateInCookie: isIE
+    }
+  });
+}
 
-  export function MSALGuardConfigFactory(): MsalGuardConfiguration {
-    return { interactionType: InteractionType.Redirect,
-      authRequest: {
-        scopes: ['user.read']
-      }}}
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return {
+    interactionType: InteractionType.Redirect,
+    authRequest: {
+      scopes: ['user.read']
+    }
+  };
+}
 
-      export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-       return{ interactionType: InteractionType.Redirect,
-        protectedResourceMap: new Map([
-          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
-        ])}}
-
-
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap: new Map([
+      ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+    ])
+  };
+}
 
 @NgModule({
   declarations: [
@@ -76,6 +80,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     MatSidenavModule,
     MatTableModule,
     AppRoutingModule,
+    MatPaginatorModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <!-- Botón para abrir o cerrar el menú lateral -->
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Titulo de la aplicación -->
+  <h1>Sistema empresarial</h1>
+
+  <!-- Espacio flexible para alinear los elementos -->
+  <span class="spacer"></span>  
+
+  <!-- Botón para cerrar sesión -->
+  <button mat-icon-button aria-label="Cerrar sesión" (click)="logout()" class="logout-button">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Contenedor del menú lateral -->
+<mat-sidenav-container autosize>
+  <!-- Menú lateral que se puede abrir o cerrar -->
+  <mat-sidenav [opened]="isSidenavOpen" mode="side">
+    <mat-nav-list>
+      <!-- Enlace a la página de asignaciones -->
+      <a mat-list-item [routerLink]="['/admin']" routerLinkActive="active-link">
+        <span class="entry">
+          <mat-icon>assignment</mat-icon>
+          Asignaciones
+        </span>
+      </a>
+
+      <!-- Enlace a la página del listado de usuarios -->
+      <a mat-list-item [routerLink]="['/user-lits']" routerLinkActive="active-link">
+        <span class="entry">
+          <mat-icon>persons</mat-icon>
+          Usuarios
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal, que cambiará según la ruta seleccionada -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
