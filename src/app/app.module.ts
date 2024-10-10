@@ -15,13 +15,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule , HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { MsalModule, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptor, MsalInterceptorConfiguration, MsalGuardConfiguration, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType, IPublicClientApplication } from '@azure/msal-browser';
+import { AsignacionesComponent } from './asignaciones/asignaciones.component';
+import { DialogAsignacionComponent } from './dialog-asignacion/dialog-asignacion.component';
 
 
 
@@ -64,15 +67,19 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     AdminComponent,
     DashboardComponent,
     NavbarComponent,
+    AsignacionesComponent,
+    DialogAsignacionComponent
   ],
   imports: [
     BrowserAnimationsModule,
+    HttpClientModule ,
     ToastrModule.forRoot(),
     MatListModule,
     BrowserModule,
     MatTabsModule,  
     MatCardModule, MatGridListModule, MatMenuModule, MatIconModule, MatButtonModule, 
     MatToolbarModule,
+    MatFormFieldModule,
     MatSidenavModule,
     MatTableModule,
     AppRoutingModule,

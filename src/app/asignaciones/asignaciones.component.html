@@ -1,0 +1,58 @@
+<div class="container">
+    <h2>Lista de Asignaciones</h2>
+    @if(errorMessage){
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+  
+    @if(loading){
+      <div>
+        <p>Cargando asignaciones...</p>
+      </div>
+      
+    }
+  
+    @if(!loading && asignaciones.length > 0){
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre de Usuario</th>
+            <th>Tipo de Equipo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Es Temporal</th>
+            <th>Fecha de Asignación</th>
+            <th>Fecha Fin de Asignación</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(asignacion of asignaciones; track $index){
+            <tr>
+              <td>{{ asignacion.id }}</td>
+              <td>{{ asignacion.nombreUsuario }}</td>
+              <td>{{ asignacion.tipoEquipo }}</td>
+              <td>{{ asignacion.marca }}</td>
+              <td>{{ asignacion.modelo }}</td>
+              <td>{{ asignacion.esTemporal ? 'Sí' : 'No' }}</td>
+              <td>{{ asignacion.fechaAsignacion  }}</td>
+              <td>{{ asignacion.fechaFinAsignacion  }}</td>
+            </tr>
+            
+          }
+        </tbody>
+      </table>
+    }
+    <!-- Tabla de asignaciones -->
+    
+    <!-- Mostrar mensaje si no hay asignaciones -->
+     @if(!loading && asignaciones.length === 0){
+       <div  class="alert alert-info">
+         No hay asignaciones disponibles.
+       </div>
+
+     }
+   
+  </div>
+  

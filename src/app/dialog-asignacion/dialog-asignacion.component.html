@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Crear Asignación</h1>
+<div mat-dialog-content>
+  <form [formGroup]="asignacionForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Equipo</mat-label>
+      <mat-select formControlName="IdEquipo" required>
+        @for(equipo of equipos; track $index){
+            <mat-option value="equipo.id">
+              {{ equipo.nombre }}
+            </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="CorreoUsuario" required>
+        @for(usuario of usuarios){
+            <mat-option [value]="usuario.correo">
+              {{ usuario.nombre }}
+            </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Correo Administrador</mat-label>
+      <input matInput formControlName="CorreoAdministrador" disabled>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="esTemporal">Asignación Temporal</mat-checkbox>
+
+    @if(mostrarFechas){
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha de Asignación</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="FechaAsignacion">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha Fin de Asignación</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="FechaFinAsignacion">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+    }
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="crearAsignacion()" [disabled]="!asignacionForm.valid">Crear</button>
+</div>
