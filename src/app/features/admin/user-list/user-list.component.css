@@ -1,0 +1,84 @@
+/* Contenedor principal */
+.table-container {
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #940707;
+    border-radius: 10px;
+    box-shadow: 0px 40px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tabla */
+  .custom-table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  /* Encabezados */
+  .table-header {
+    background-color: #ffffff49;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #000000;
+  }
+  
+  /* Celdas */
+  .table-cell {
+    padding: 10px;
+    border: 1px solid #721919;
+    color: #333333;
+    text-align: left;
+    background-color: #fdfdfd;
+  }
+  
+  /* Fila de la tabla (hover effect) */
+  .mat-row:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Fila seleccionada */
+  .mat-row.mat-selected {
+    background-color: #e0e0e0;
+  }
+  
+  /* Paginación */
+  .custom-paginator {
+    margin-top: 10px;
+    text-align: right;
+  }
+  
+  .mat-paginator .mat-paginator-range-label {
+    color: #333;
+  }
+  
+  .mat-paginator .mat-paginator-page-size {
+    color: #333;
+  }
+  
+  .mat-paginator .mat-button {
+    color: #db3333fb;
+    font-weight: bold;
+  }
+  
+  /* Sombra para el contenedor */
+  .mat-elevation-z8 {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .table-container {
+      margin: 10px;
+    }
+  
+    .custom-table {
+      font-size: 14px;
+    }
+  
+    .table-header, .table-cell {
+      padding: 8px;
+    }
+  }
+  

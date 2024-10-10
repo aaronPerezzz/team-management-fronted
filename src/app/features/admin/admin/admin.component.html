@@ -1,0 +1,100 @@
+<div class="dashboard">
+  <main class="content">
+    <mat-tab-group>
+      <!-- Pestaña de Equipos electrónicos -->
+      <mat-tab label="Equipos electrónicos">
+        <div class="dashboard-container">
+          <!-- Grid de tarjetas -->
+          <mat-grid-list cols="3" rowHeight="140px">
+            <!-- Tarjetas de estado de los equipos -->
+            <mat-grid-tile>
+              <mat-card class="card available">
+                <mat-card-header>
+                  <mat-card-title>Disponibles</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>6</p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-card class="card occupied">
+                <mat-card-header>
+                  <mat-card-title>Ocupados</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>10</p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-card class="card maintenance">
+                <mat-card-header>
+                  <mat-card-title>En Mantenimiento</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>9</p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="tabla-asignaciones">
+          <caption>Asignación de Equipos</caption>
+        
+          <!-- Columna de Empleado -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Empleado</th>
+            <td mat-cell *matCellDef="let empleado">{{ empleado.nombre }}</td>
+          </ng-container>
+        
+          <!-- Columna de Equipo -->
+          <ng-container matColumnDef="equipo">
+            <th mat-header-cell *matHeaderCellDef>Equipo</th>
+            <td mat-cell *matCellDef="let empleado">
+              <mat-icon>{{ getEquipoIcon(empleado.equipo) }}</mat-icon>
+            </td>
+          </ng-container>
+        
+          <!-- Columna de Serie -->
+          <ng-container matColumnDef="serie">
+            <th mat-header-cell *matHeaderCellDef>Serie</th>
+            <td mat-cell *matCellDef="let empleado">{{ empleado.serie }}</td>
+          </ng-container>
+        
+          <!-- Columna de Acción: Eliminar -->
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let empleado">
+              <button mat-icon-button color="warn" (click)="eliminarEmpleado(empleado)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="actualizarEmpleado(empleado)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        
+          <!-- Fila de la tabla -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+        <!-- Paginador -->
+        <mat-paginator
+          [length]="empleados.length"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 20]"
+          (page)="pageEvent($event)">
+        </mat-paginator>
+      </mat-tab>
+
+      <!-- Pestaña de Equipos de transporte -->
+      <mat-tab label="Equipos de transporte">
+        <app-dashboard></app-dashboard>
+      </mat-tab>
+    </mat-tab-group>
+  </main>
+</div>

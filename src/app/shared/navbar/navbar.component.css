@@ -1,0 +1,24 @@
+mat-sidenav {
+  width: 190px; 
+  background-color: black;
+  border-radius: 0;
+}
+
+  mat-toolbar{
+    background-color: black;
+  }
+
+  h1{
+    color: #ffffff;
+  }
+  .entry{
+    color: #ffffff;
+  }
+  .logout-button {
+    color: white; 
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
