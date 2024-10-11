@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
-import {AdminComponent} from './admin/admin.component'
-import {AsignacionesComponent } from './asignaciones/asignaciones.component';
+import {AdminComponent} from './features/admin/admin.component'
+import {AsignacionesComponent } from './features/asignaciones/asignaciones.component';
 
 const routes: Routes = [
   { path: 'profile', component: AdminComponent, canActivate: [MsalGuard] },

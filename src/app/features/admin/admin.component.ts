@@ -1,8 +1,8 @@
-import { ToastService } from '../core/services/toast.service';
-import { ToastType } from '../utils/enums/toastType';
+import { ToastType } from '../../utils/enums/toastType';
 import { Component, OnInit } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { Router } from '@angular/router';
+import { ToastService } from '../../core/services/services/toast.service';
 
 @Component({
   selector: 'app-admin',

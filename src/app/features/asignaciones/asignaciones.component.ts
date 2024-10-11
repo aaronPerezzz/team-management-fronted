@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AsignacionRegistroDTO } from '../core/services/interfaces/AsignacionRegistroDTO';
-import { BaseDTO } from '../core/services/interfaces/BaseDTO';
-import { Repositorio } from '../core/services/services/repositorio.service';
+import { AsignacionRegistroDTO } from '../../core/services/interfaces/AsignacionRegistroDTO';
+import { BaseDTO } from '../../core/services/interfaces/BaseDTO';
+import { Repositorio } from '../../core/services/services/repositorio.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAsignacionComponent } from '../dialog-asignacion/dialog-asignacion.component';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AsignacionCrearDTO } from '../core/services/interfaces/AsignacionCrearDTO';
-import { Repositorio } from '../core/services/services/repositorio.service';
+import { AsignacionCrearDTO } from '../../core/services/interfaces/AsignacionCrearDTO';
+import { Repositorio } from '../../core/services/services/repositorio.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 

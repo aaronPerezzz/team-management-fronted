@@ -15,9 +15,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { AdminComponent } from './features/admin/admin.component';
+import { DashboardComponent } from './shared/dashboard/dashboard.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatTableModule} from '@angular/material/table';
@@ -29,8 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule , HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { MsalModule, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptor, MsalInterceptorConfiguration, MsalGuardConfiguration, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType, IPublicClientApplication } from '@azure/msal-browser';
-import { AsignacionesComponent } from './asignaciones/asignaciones.component';
-import { DialogAsignacionComponent } from './dialog-asignacion/dialog-asignacion.component';
+import { AsignacionesComponent } from './features/asignaciones/asignaciones.component';
+import { DialogAsignacionComponent } from './features/dialog-asignacion/dialog-asignacion.component';
 
 
 
