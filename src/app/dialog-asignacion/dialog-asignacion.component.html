@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Crear Asignación</h1>
 <div mat-dialog-content>
-  <form [formGroup]="asignacionForm">
+  <form formGroup="asignacionForm">
     <mat-form-field appearance="fill">
       <mat-label>Equipo</mat-label>
       <mat-select formControlName="IdEquipo" required>
@@ -15,7 +15,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Usuario</mat-label>
       <mat-select formControlName="CorreoUsuario" required>
-        @for(usuario of usuarios){
+        @for(usuario of usuarios; track $index){
             <mat-option [value]="usuario.correo">
               {{ usuario.nombre }}
             </mat-option>

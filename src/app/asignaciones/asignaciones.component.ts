@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AsignacionRegistroDTO } from '../core/services/interfaces/AsignacionRegistroDTO';
 import { BaseDTO } from '../core/services/interfaces/BaseDTO';
-import { Repositorio } from '../core/services/services/repositorio';
+import { Repositorio } from '../core/services/services/repositorio.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAsignacionComponent } from '../dialog-asignacion/dialog-asignacion.component';
+
+
 
 @Component({
   selector: 'app-asignaciones',
@@ -17,7 +21,19 @@ export class AsignacionesComponent implements OnInit {
   // Paginación
   pag = { Pagina: 1, CantidadRegistros: 10 };
 
-  constructor(private repositorio: Repositorio) {}
+  constructor(private repositorio: Repositorio,private dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAsignacionComponent, {
+      width: '400px'
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Asignación creada:', result);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getAllAssignments();

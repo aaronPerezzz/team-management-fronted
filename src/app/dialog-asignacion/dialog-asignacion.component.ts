@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Repositorio } from '../core/services/services/repositorio';
 import { AsignacionCrearDTO } from '../core/services/interfaces/AsignacionCrearDTO';
+import { Repositorio } from '../core/services/services/repositorio.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dialog-asignacion',

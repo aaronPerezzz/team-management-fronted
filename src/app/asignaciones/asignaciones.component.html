@@ -1,5 +1,6 @@
 <div class="container">
     <h2>Lista de Asignaciones</h2>
+    <button mat-raised-button color="primary" (click)="openDialog()">Crear Asignación</button>
     @if(errorMessage){
       <div class="alert alert-danger">
         {{ errorMessage }}

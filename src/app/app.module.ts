@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';  
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -25,6 +31,7 @@ import { MsalModule, MsalService, MsalGuard, MsalBroadcastService, MsalIntercept
 import { PublicClientApplication, InteractionType, IPublicClientApplication } from '@azure/msal-browser';
 import { AsignacionesComponent } from './asignaciones/asignaciones.component';
 import { DialogAsignacionComponent } from './dialog-asignacion/dialog-asignacion.component';
+
 
 
 
@@ -83,6 +90,14 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     MatSidenavModule,
     MatTableModule,
     AppRoutingModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     provideAnimationsAsync(),
